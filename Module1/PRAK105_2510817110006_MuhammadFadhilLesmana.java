@@ -10,14 +10,14 @@ public class PRAK105_2510817110006_MuhammadFadhilLesmana {
             Scanner input = new Scanner(System.in).useLocale(Locale.US);
 
             System.out.print("Masukkan jari-jari: ");
-            double fingers = input.nextDouble();
+            double radius = input.nextDouble();
 
             System.out.print("Masukkan tinggi: ");
             double tall = input.nextDouble();
 
-            double volume = PHI * fingers * fingers * tall;
+            double volume = PHI * radius * radius * tall;
 
-            System.out.println("Volume tabung dengan jari-jari " + fingers +
+            System.out.println("Volume tabung dengan jari-jari " + radius +
                     " cm dan tinggi " + tall + " cm adalah " + volume + " m3");
             input.close();
         }
