@@ -2,34 +2,39 @@ package Module2.PRAK201_2510817110006_MuhammadFadhilLesmana;
 
 public class Fruit {
     private String fruitName;
-    private double unitWeight;
-    private double unitPrice;
-    private double totalPurchase;
+    private double price;
+    private double weight;
+    private double purchaseTotal;
+    private double pricePerKg;
 
-    public Fruit(String fruitName, double unitWeight, double unitPrice, double totalPurchase) {
+    public Fruit(String fruitName, double weight, double price, double purchaseTotal) {
         this.fruitName = fruitName;
-        this.unitWeight = unitWeight;
-        this.unitPrice = unitPrice;
-        this.totalPurchase = totalPurchase;
+        this.weight = weight;
+        this.price = price;
+        this.purchaseTotal = purchaseTotal;
+        this.pricePerKg = this.price / this.weight;
     }
 
     public void printInfo() {
         System.out.println("Nama Buah: " + fruitName);
-        System.out.println("Berat: " + unitWeight);
-        System.out.println("Harga: " + unitPrice);
-        System.out.println("Jumlah Beli: " + totalPurchase + "kg");
+        System.out.println("Berat: " + weight);
+        System.out.println("Harga: " + price);
+        System.out.println("Jumlah Beli: " + purchaseTotal + "kg");
         System.out.printf("Harga Sebelum Diskon: Rp%.2f\n", getPreDiscountPrice());
         System.out.printf("Total Diskon: Rp%.2f\n", getDiscountTotal());
         System.out.printf("Harga Setelah Diskon: Rp%.2f\n\n", getPostDiscountPrice());
     }
 
     public double getPreDiscountPrice() {
-        return (totalPurchase / unitWeight) * unitPrice;
+        return pricePerKg * purchaseTotal;
     }
 
     public double getDiscountTotal() {
-        double totalBlock = Math.floor(totalPurchase / 4);
-        return totalBlock * 0.02 * unitPrice * 4;
+        int discountThresholdKg = 4;
+        double discountPercentage = 0.02;
+
+        int discountBatches = (int)(this.purchaseTotal / discountThresholdKg);
+        return discountBatches * (this.pricePerKg * discountThresholdKg) * discountPercentage;
     }
 
     public double getPostDiscountPrice() {
