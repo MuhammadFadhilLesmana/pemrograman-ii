@@ -8,7 +8,6 @@ public class Main {
         System.out.print("Nama Hewan Peliharaan: ");
         String petName = input.nextLine();
         System.out.print("Ras: ");
-        Pet myPet = new Pet("Kucing Anggora", "Leo");
         String petBreed = input.nextLine();
 
         Pet pet = new Pet(petName, petBreed);
